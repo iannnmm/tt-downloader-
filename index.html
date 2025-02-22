@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unduh Video atau Musik TikTok</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+ 
+
+            nav ul.active {
+                transform: translateY(0);
+            }
+            nav ul li {
+                text-align: center;
+                margin: 10px 0;
+            }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 80px; /* Adjusted to account for fixed header */
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
+        footer {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer p {
+            line-height: 1.6;
+        }
+        section#about {
+            margin-top: 40px;
+            text-align: center;
+        }
+        section#about ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        section#about ul li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Unduh Video atau Musik TikTok</h1>
+    <div class="container">
+        <form id="downloadForm">
+            <label for="tiktok-url">URL TikTok:</label>
+            <input type="text" id="tiktok-url" required><br>
+
+            <label for="format">Pilih Format:</label>
+            <select id="format" required>
+                <option value="" disabled selected>Pilih Format</option>
+                <option value="mp4">Video (MP4)</option>
+                <option value="mp3">Audio (MP3)</option>
+            </select><br>
+
+            <button type="submit">Unduh</button>
+            <p class="error" id="errorMessage" style="display:none;"></p>
+        </form>
+    </div>
+
+    <footer>
+        <h2>Cara Penggunaan</h2>
+        <p>
+            
+            1. Masukkan URL video TikTok yang ingin Anda unduh.<br>
+              jenis URL yang didukung 
+               •https://www.tiktok.com/@username/video/{VIDEO_ID}
+               •https://vm.tiktok.com/{VIDEO_ID}
+               •https://vt.tiktok.com/{VIDEO_IF}<br>
+            2. Pilih format output yang diinginkan (Video MP4 atau Audio MP3).<br>
+            3. Klik tombol "Unduh" untuk memulai proses unduhan.<br>
+            4. Tunggu beberapa saat hingga file siap untuk diunduh.
+        </p>
+    </footer>
+
+    <section id="about">
+        <h2>Tentang Saya</h2>
+        <p>Selamat datang di situs saya! Aku adalah seorang NPC yang sedang belajar teknologi.jadi maklumi aja kalo banyak kekurangan-kekurangan</p>
+        <ul>
+            <li>Email: sanzzgo00@gmail.com</li>
+            <li>Telepon: +62 857 1243 8923</li>
+        </ul>
+    </section>
+
+    <script>
+        document.getElementById('downloadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const tiktokUrl = document.getElementById('tiktok-url').value.trim();
+            const format = document.getElementById('format').value;
+
+            if (!tiktokUrl || !format) {
+                document.getElementById('errorMessage').textContent = 'Mohon isi URL TikTok dan pilih format!';
+                document.getElementById('errorMessage').style.display = 'block';
+                return;
+            }
+
+            const endpoint = `https://tools.opslinuxsec.com/ttdl/download.php?url=${encodeURIComponent(tiktokUrl)}&format=${format}`;
+            window.location.href = endpoint;
+            document.getElementById('errorMessage').style.display = 'none';
+        });
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
